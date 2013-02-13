@@ -1,0 +1,11 @@
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\CAS_Memcached_Integration.dll
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\CAS_Memcached_Integration.pdb
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\DotNetCasClient.dll
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\Enyim.Caching.dll
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\DotNetCasClient.pdb
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\DotNetCasClient.xml
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\Enyim.Caching.pdb
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\bin\Debug\Enyim.Caching.xml
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\obj\Debug\CAS_Memcached_Integration.dll
+C:\Users\edomazlicky\Documents\GitHub\dotnet-cas-client\CAS_Memcached_Integration\obj\Debug\CAS_Memcached_Integration.pdb
