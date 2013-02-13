@@ -1,4 +1,5 @@
 Memcached Integration for the Jasig DotNet CAS Client
+----------------------------------------------------------
 
 This is a C# library that provides Memcached integration services for the Jasig DotNet CAS Client. If you
 merge the following github branch into your DotNetCasClient you can utilize this library:
