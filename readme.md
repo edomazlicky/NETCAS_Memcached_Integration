@@ -14,10 +14,14 @@ serviceTicketManager="Cas.Integration.Memcached.MemcachedServiceTicketManager, C
 
 In your .NET app that utlizies the CAS Client you would need to add an Enyim Caching configuration section as well like this:
 In configSections:
+```XML
+<configSections>
+    <section name="casClientConfig" type="DotNetCasClient.Configuration.CasClientConfiguration, DotNetCasClient"/>
+<!-- add Enyim to Config Sections -->
  <sectionGroup name="enyim.com">
       <section name="memcached" type="Enyim.Caching.Configuration.MemcachedClientSection,Enyim.Caching"/>
     </sectionGroup>
-then:
+</configSections>
 
   <enyim.com>
     <memcached protocol="Binary">
@@ -26,6 +30,6 @@ then:
       </servers>
     </memcached>
   </enyim.com>
-
+```
 
  
