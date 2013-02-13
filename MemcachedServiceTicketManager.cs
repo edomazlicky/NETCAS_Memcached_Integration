@@ -32,7 +32,7 @@ namespace Cas.Integration.Memcached
 {
     /// <summary>
     /// An IServiceTicketManager implementation that relies on the Memcached for ticket 
-    /// storage.  This model will support clustered, load balanced, or round-robin style configurations.
+    /// storage.  This model can support clustered, load balanced, or round-robin style configurations.
     /// </summary>
     /// <author>Eric Domazlicky</author>
     public sealed class MemcachedServiceTicketManager : IServiceTicketManager
@@ -80,12 +80,11 @@ namespace Cas.Integration.Memcached
         /// <exception cref="ArgumentException">serviceTicket is empty</exception>
         public CasAuthenticationTicket GetTicket(string serviceTicket)
         {
-            CommonUtils.AssertNotNullOrEmpty(serviceTicket, "serviceTicket parameter cannot be null or empty.");
-            log.Debug("Looking for a serviceTicket:"+serviceTicket);
+            CommonUtils.AssertNotNullOrEmpty(serviceTicket, "serviceTicket parameter cannot be null or empty.");           
             string key = GetTicketKey(serviceTicket);            
             if (client.Get(key) != null)
             {
-                log.Debug("Found service ticket:" + serviceTicket);
+                log.Debug("Got service ticket:" + serviceTicket);
                 CasAuthenticationTicket result = client.Get(key) as CasAuthenticationTicket;
                 return result;
             }
@@ -102,7 +101,7 @@ namespace Cas.Integration.Memcached
         public void InsertTicket(CasAuthenticationTicket casAuthenticationTicket, DateTime expiration)
         {
             CommonUtils.AssertNotNull(casAuthenticationTicket, "casAuthenticationTicket parameter cannot be null.");
-            log.Debug("Inserting service ticket into Memcached");
+            log.Debug("Inserting service ticket:"+casAuthenticationTicket.ServiceTicket);
             client.Store(StoreMode.Set, GetTicketKey(casAuthenticationTicket.ServiceTicket), casAuthenticationTicket, expiration);            
         }
 
@@ -133,13 +132,12 @@ namespace Cas.Integration.Memcached
             CommonUtils.AssertNotNullOrEmpty(serviceTicket, "serviceTicket parameter cannot be null or empty.");
 
             string key = GetTicketKey(serviceTicket);
-            log.Debug("Revoking service ticket");
+            log.Debug("Revoking service ticket:"+serviceTicket);
             if (client.Get(key) != null)
             {
                 CasAuthenticationTicket ticket = client.Get(key) as CasAuthenticationTicket;
                 if (ticket != null)
-                {
-                    log.Debug("Service ticket found and removed");
+                {                    
                     client.Remove(key);
                 }
             }
@@ -155,7 +153,8 @@ namespace Cas.Integration.Memcached
         public bool ContainsTicket(string serviceTicket)
         {
             CommonUtils.AssertNotNullOrEmpty(serviceTicket, "serviceTicket parameter cannot be null or empty.");
-                        
+            // cache version used enumeration to check all tickets regardless of their key
+            // but it's not possible with Memcached so this is the best we can do.            
             return client.Get(GetTicketKey(serviceTicket)) != null;
         }
 
